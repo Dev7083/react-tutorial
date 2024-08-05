@@ -5,6 +5,14 @@ function UseState() {
   const [counter, setCounter] = useState(15);
   const addValue = () => {
     setCounter(counter + 1);
+    /* prevCounter -- exisitng state( last updated state )
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1);
+    setCounter((prevCounter) => prevCounter + 1); */
+    // react usestate changes state in batches 
   };
   const removeValue = () => {
     setCounter(counter - 1);
