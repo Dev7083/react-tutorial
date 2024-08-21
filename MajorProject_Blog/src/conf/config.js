@@ -15,6 +15,8 @@ export class Service {
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
     }
+
+    // post services
     async createPost({ title, slug, content, featuredImage, status, userId }) {
         try {
             return await this.databases.createDocument(
@@ -53,8 +55,6 @@ export class Service {
         }
     }
 
-
-
     async deletePost(slug) {
         try {
             await this.databases.deleteDocument(
@@ -80,7 +80,56 @@ export class Service {
             console.log("Appwrite Service  :: getPost :: error ", e);
         }
     }
+
+    async getPosts(queries = [Query.equal("status", "active")]) {
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries,
+            )
+        } catch (e) {
+            console.log("Appwrite Service  :: getPosts :: error ", e);
+            return false
+        }
+    }
+    // File upload service
+
+    async uploadFile(file) {
+        try {
+            return await this.bucket.createFile(
+                conf.appwriteBucketId,
+                ID.unique(),
+                file
+            )
+        } catch (e) {
+            console.log("Appwrite Service  :: uploadFile :: error ", e);
+            return false
+        }
+    }
+
+    async deleteFile(fileId) {
+        try {
+            await this.bucket.deleteFile(
+                conf.appwriteBucketId,
+                fileId
+            );
+            return true
+
+        } catch (e) {
+            console.log("Appwrite Service  :: deleteFile :: error ", e);
+            return false
+        }
+    }
+
+    getFilePreview(fileId) {
+        return this.bucket.getFilePreview(
+            conf.appwriteBucketId,
+            fileId
+        )
+    }
 }
+
 const service = new Service()
 
 export default service
