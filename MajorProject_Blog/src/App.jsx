@@ -1,15 +1,37 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useDispatch } from 'react-redux'
+import authService from './appwrite/auth'
+import { login, logout } from './store/authSlice'
 
 function App() {
-  const [count, setCount] = useState(0)
-  return (
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    authService.getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login({ userData }))
+        } else {
+          dispatch(logout())
+        }
+      })
+      .finally(() => setLoading(false))
+  }, [third])
+
+  return !loading ? (
     <>
-      <h1>A BLog with Appwrite</h1>
+      <div className="mih-h-screen flex flex-wrap content-between bg-gray-400">
+        <div className="w-full block">
+          <Header />
+          <main>
+            {/* <Outlet/> */}
+          </main>
+          <Footer />
+        </div>
+      </div>
     </>
-  )
+  ) : null
 }
 
 export default App
