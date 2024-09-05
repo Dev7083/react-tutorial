@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { useDispatch } from 'react-redux'
 import authService from './appwrite/auth'
 import { login, logout } from './store/authSlice'
+import {Header} from './components'
+import {Footer} from './components'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -17,7 +19,7 @@ function App() {
         }
       })
       .finally(() => setLoading(false))
-  }, [third])
+  })
 
   return !loading ? (
     <>
