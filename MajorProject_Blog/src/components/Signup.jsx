@@ -2,18 +2,17 @@ import React, { useState } from 'react'
 import authService from '../appwrite/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../store/authSlice'
-import { Button, Input, Logo } from './index'
+import { Button, Input, Logo } from './index.js'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
-const Signup = () => {
+function Signup() {
 	const navigate = useNavigate()
 	const [error, setError] = useState("")
 	const dispatch = useDispatch()
 	const { register, handleSubmit } = useForm()
 
 	const create = async (data) => {
-
 		setError("")
 		try {
 			const userData = await authService.createAccount(data)
@@ -26,6 +25,7 @@ const Signup = () => {
 			setError(error.message)
 		}
 	}
+
 	return (
 		<div className="flex items-center justify-center">
 			<div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
