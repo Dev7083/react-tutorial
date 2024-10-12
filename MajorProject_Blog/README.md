@@ -1,10 +1,68 @@
 # SLuGs by Dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Interactive Blog Application
+- Cloud File Upload
+- Session Management & Auth
+- DataBase
+- Appwrite Service
 
-Currently, two official plugins are available:
+```
+SLuGs Blog
+├─ .env
+├─ .env.sample
+├─ .gitignore
+├─ eslint.config.js
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ postcss.config.js
+├─ public
+│  └─ vite.svg
+├─ README.md
+├─ src
+│  ├─ App.css
+│  ├─ App.jsx
+│  ├─ appwrite
+│  │  ├─ auth.js
+│  │  └─ config.js
+│  ├─ assets
+│  │  └─ react.svg
+│  ├─ components
+│  │  ├─ AuthLayout.jsx
+│  │  ├─ Button.jsx
+│  │  ├─ container
+│  │  │  └─ Container.jsx
+│  │  ├─ Footer
+│  │  │  └─ Footer.jsx
+│  │  ├─ Header
+│  │  │  ├─ Header.jsx
+│  │  │  └─ LogoutBtn.jsx
+│  │  ├─ index.js
+│  │  ├─ Input.jsx
+│  │  ├─ Login.jsx
+│  │  ├─ Logo.jsx
+│  │  ├─ post-form
+│  │  │  └─ PostForm.jsx
+│  │  ├─ PostCard.jsx
+│  │  ├─ RTE.jsx
+│  │  ├─ Select.jsx
+│  │  └─ Signup.jsx
+│  ├─ conf
+│  │  └─ conf.js
+│  ├─ index.css
+│  ├─ main.jsx
+│  ├─ pages
+│  │  ├─ AddPost.jsx
+│  │  ├─ AllPosts.jsx
+│  │  ├─ EditPost.jsx
+│  │  ├─ Home.jsx
+│  │  ├─ Login.jsx
+│  │  ├─ Post.jsx
+│  │  └─ Signup.jsx
+│  └─ store
+│     ├─ authSlice.js
+│     └─ store.js
+├─ tailwind.config.js
+└─ vite.config.js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-# Major Project Blog --
+```
